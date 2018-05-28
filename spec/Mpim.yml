@@ -1,0 +1,68 @@
+post:
+  close:
+    description: 'Closes a multiparty direct message channel.'
+    url: 'https://api.slack.com/methods/mpim.close'
+    endpoint: /mpim.close
+    parameters:
+      channel:
+        type: string
+        description: 'MPIM to close.'
+  mark:
+    description: 'Sets the read cursor in a multiparty direct message channel.'
+    url: 'https://api.slack.com/methods/mpim.mark'
+    endpoint: /mpim.mark
+    parameters:
+      ts:
+        type: number
+        description: 'Timestamp of the most recently seen message.'
+      channel:
+        type: string
+        description: 'multiparty direct message channel to set reading cursor in.'
+  open:
+    description: 'This method opens a multiparty direct message.'
+    url: 'https://api.slack.com/methods/mpim.open'
+    endpoint: /mpim.open
+    parameters:
+      users:
+        type: string
+        description: 'Comma separated lists of users.  The ordering of the users is preserved whenever a MPIM group is returned.'
+get:
+  history:
+    description: 'Fetches history of messages and events from a multiparty direct message.'
+    url: 'https://api.slack.com/methods/mpim.history'
+    endpoint: /mpim.history
+    parameters:
+      count:
+        type: integer
+        description: 'Number of messages to return, between 1 and 1000.'
+      unreads:
+        type: boolean
+        description: 'Include `unread_count_display` in the output?'
+      inclusive:
+        type: boolean
+        description: 'Include messages with latest or oldest timestamp in results.'
+      oldest:
+        type: number
+        description: 'Start of time range of messages to include in results.'
+      channel:
+        type: string
+        description: 'Multiparty direct message to fetch history for.'
+      latest:
+        type: number
+        description: 'End of time range of messages to include in results.'
+  getList:
+    description: 'Lists multiparty direct message channels for the calling user.'
+    url: 'https://api.slack.com/methods/mpim.list'
+    endpoint: /mpim.list
+    parameters: {  }
+  replies:
+    description: 'Retrieve a thread of messages posted to a direct message conversation from a multiparty direct message.'
+    url: 'https://api.slack.com/methods/mpim.replies'
+    endpoint: /mpim.replies
+    parameters:
+      thread_ts:
+        type: number
+        description: 'Unique identifier of a thread''s parent message.'
+      channel:
+        type: string
+        description: 'Multiparty direct message channel to fetch thread from.'

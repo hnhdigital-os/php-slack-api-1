@@ -1,0 +1,12 @@
+get:
+  test:
+    description: 'Checks API calling code.'
+    url: 'https://api.slack.com/methods/api.test'
+    endpoint: /api.test
+    parameters:
+      foo:
+        type: string
+        description: 'example property to return'
+      error:
+        type: string
+        description: 'Error response to return'

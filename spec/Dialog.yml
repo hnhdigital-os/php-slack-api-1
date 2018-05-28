@@ -1,0 +1,12 @@
+get:
+  open:
+    description: 'Open a dialog with a user'
+    url: 'https://api.slack.com/methods/dialog.open'
+    endpoint: /dialog.open
+    parameters:
+      dialog:
+        type: string
+        description: 'The dialog definition. This must be a JSON-encoded string.'
+      trigger_id:
+        type: string
+        description: 'Exchange a trigger to post to the user.'

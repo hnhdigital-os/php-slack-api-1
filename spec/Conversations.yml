@@ -1,0 +1,213 @@
+post:
+  archive:
+    description: 'Archives a conversation.'
+    url: 'https://api.slack.com/methods/conversations.archive'
+    endpoint: /conversations.archive
+    parameters:
+      channel:
+        type: string
+        description: 'ID of conversation to archive'
+  close:
+    description: 'Closes a direct message or multi-person direct message.'
+    url: 'https://api.slack.com/methods/conversations.close'
+    endpoint: /conversations.close
+    parameters:
+      channel:
+        type: string
+        description: 'Conversation to close.'
+  create:
+    description: 'Initiates a public or private channel-based conversation'
+    url: 'https://api.slack.com/methods/conversations.create'
+    endpoint: /conversations.create
+    parameters:
+      name:
+        type: string
+        description: 'Name of the public or private channel to create'
+      is_private:
+        type: boolean
+        description: 'Create a private channel instead of a public one'
+  invite:
+    description: 'Invites users to a channel.'
+    url: 'https://api.slack.com/methods/conversations.invite'
+    endpoint: /conversations.invite
+    parameters:
+      users:
+        type: string
+        description: 'A comma separated list of user IDs. Up to 30 users may be listed.'
+      channel:
+        type: string
+        description: 'The ID of the public or private channel to invite user(s) to.'
+  join:
+    description: 'Joins an existing conversation.'
+    url: 'https://api.slack.com/methods/conversations.join'
+    endpoint: /conversations.join
+    parameters:
+      channel:
+        type: string
+        description: 'ID of conversation to join'
+  kick:
+    description: 'Removes a user from a conversation.'
+    url: 'https://api.slack.com/methods/conversations.kick'
+    endpoint: /conversations.kick
+    parameters:
+      user:
+        type: string
+        description: 'User ID to be removed.'
+      channel:
+        type: string
+        description: 'ID of conversation to remove user from.'
+  leave:
+    description: 'Leaves a conversation.'
+    url: 'https://api.slack.com/methods/conversations.leave'
+    endpoint: /conversations.leave
+    parameters:
+      channel:
+        type: string
+        description: 'Conversation to leave'
+  open:
+    description: 'Opens or resumes a direct message or multi-person direct message.'
+    url: 'https://api.slack.com/methods/conversations.open'
+    endpoint: /conversations.open
+    parameters:
+      return_im:
+        type: boolean
+        description: 'Boolean, indicates you want the full IM channel definition in the response.'
+      users:
+        type: string
+        description: 'Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a `channel` when not supplying `users`.'
+      channel:
+        type: string
+        description: 'Resume a conversation by supplying an `im` or `mpim`''s ID. Or provide the `users` field instead.'
+  rename:
+    description: 'Renames a conversation.'
+    url: 'https://api.slack.com/methods/conversations.rename'
+    endpoint: /conversations.rename
+    parameters:
+      name:
+        type: string
+        description: 'New name for conversation.'
+      channel:
+        type: string
+        description: 'ID of conversation to rename'
+  setPurpose:
+    description: 'Sets the purpose for a conversation.'
+    url: 'https://api.slack.com/methods/conversations.setPurpose'
+    endpoint: /conversations.setPurpose
+    parameters:
+      purpose:
+        type: string
+        description: 'A new, specialer purpose'
+      channel:
+        type: string
+        description: 'Conversation to set the purpose of'
+  setTopic:
+    description: 'Sets the topic for a conversation.'
+    url: 'https://api.slack.com/methods/conversations.setTopic'
+    endpoint: /conversations.setTopic
+    parameters:
+      topic:
+        type: string
+        description: 'The new topic string. Does not support formatting or linkification.'
+      channel:
+        type: string
+        description: 'Conversation to set the topic of'
+  unarchive:
+    description: 'Reverses conversation archival.'
+    url: 'https://api.slack.com/methods/conversations.unarchive'
+    endpoint: /conversations.unarchive
+    parameters:
+      channel:
+        type: string
+        description: 'ID of conversation to unarchive'
+get:
+  history:
+    description: 'Fetches a conversation''s history of messages and events.'
+    url: 'https://api.slack.com/methods/conversations.history'
+    endpoint: /conversations.history
+    parameters:
+      inclusive:
+        type: boolean
+        description: 'Include messages with latest or oldest timestamp in results only when either timestamp is specified.'
+      cursor:
+        type: string
+        description: 'Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request''s `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.'
+      limit:
+        type: integer
+        description: 'The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn''t been reached.'
+      oldest:
+        type: number
+        description: 'Start of time range of messages to include in results.'
+      channel:
+        type: string
+        description: 'Conversation ID to fetch history for.'
+      latest:
+        type: number
+        description: 'End of time range of messages to include in results.'
+  info:
+    description: 'Retrieve information about a conversation.'
+    url: 'https://api.slack.com/methods/conversations.info'
+    endpoint: /conversations.info
+    parameters:
+      channel:
+        type: string
+        description: 'Conversation ID to learn more about'
+      include_locale:
+        type: boolean
+        description: 'Set this to `true` to receive the locale for this conversation. Defaults to `false`'
+  getList:
+    description: 'Lists all channels in a Slack team.'
+    url: 'https://api.slack.com/methods/conversations.list'
+    endpoint: /conversations.list
+    parameters:
+      cursor:
+        type: string
+        description: 'Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request''s `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.'
+      limit:
+        type: integer
+        description: 'The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn''t been reached. Must be an integer no larger than 1000.'
+      exclude_archived:
+        type: boolean
+        description: 'Set to `true` to exclude archived channels from the list'
+      types:
+        type: string
+        description: 'Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`'
+  members:
+    description: 'Retrieve members of a conversation.'
+    url: 'https://api.slack.com/methods/conversations.members'
+    endpoint: /conversations.members
+    parameters:
+      cursor:
+        type: string
+        description: 'Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request''s `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.'
+      limit:
+        type: integer
+        description: 'The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn''t been reached.'
+      channel:
+        type: string
+        description: 'ID of the conversation to retrieve members for'
+  replies:
+    description: 'Retrieve a thread of messages posted to a conversation'
+    url: 'https://api.slack.com/methods/conversations.replies'
+    endpoint: /conversations.replies
+    parameters:
+      inclusive:
+        type: boolean
+        description: 'Include messages with latest or oldest timestamp in results only when either timestamp is specified.'
+      ts:
+        type: number
+        description: 'Unique identifier of a thread''s parent message.'
+      cursor:
+        type: string
+        description: 'Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request''s `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.'
+      limit:
+        type: integer
+        description: 'The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn''t been reached.'
+      oldest:
+        type: number
+        description: 'Start of time range of messages to include in results.'
+      channel:
+        type: string
+        description: 'Conversation ID to fetch thread from.'
+      latest:
+        type: number
+        description: 'End of time range of messages to include in results.'

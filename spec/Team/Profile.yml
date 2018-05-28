@@ -1,0 +1,9 @@
+get:
+  get:
+    description: 'Retrieve a team''s profile.'
+    url: 'https://api.slack.com/methods/team.profile.get'
+    endpoint: /team.profile.get
+    parameters:
+      visibility:
+        type: string
+        description: 'Filter by visibility.'

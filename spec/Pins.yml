@@ -1,0 +1,44 @@
+post:
+  add:
+    description: 'Pins an item to a channel.'
+    url: 'https://api.slack.com/methods/pins.add'
+    endpoint: /pins.add
+    parameters:
+      file_comment:
+        type: string
+        description: 'File comment to pin.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to pin.'
+      file:
+        type: string
+        description: 'File to pin.'
+      channel:
+        type: string
+        description: 'Channel to pin the item in.'
+  remove:
+    description: 'Un-pins an item from a channel.'
+    url: 'https://api.slack.com/methods/pins.remove'
+    endpoint: /pins.remove
+    parameters:
+      file_comment:
+        type: string
+        description: 'File comment to un-pin.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to un-pin.'
+      file:
+        type: string
+        description: 'File to un-pin.'
+      channel:
+        type: string
+        description: 'Channel where the item is pinned to.'
+get:
+  getList:
+    description: 'Lists items pinned to a channel.'
+    url: 'https://api.slack.com/methods/pins.list'
+    endpoint: /pins.list
+    parameters:
+      channel:
+        type: string
+        description: 'Channel to get pinned items for.'

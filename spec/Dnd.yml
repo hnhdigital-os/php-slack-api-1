@@ -1,0 +1,36 @@
+post:
+  endDnd:
+    description: 'Ends the current user''s Do Not Disturb session immediately.'
+    url: 'https://api.slack.com/methods/dnd.endDnd'
+    endpoint: /dnd.endDnd
+    parameters: {  }
+  endSnooze:
+    description: 'Ends the current user''s snooze mode immediately.'
+    url: 'https://api.slack.com/methods/dnd.endSnooze'
+    endpoint: /dnd.endSnooze
+    parameters: {  }
+  setSnooze:
+    description: 'Turns on Do Not Disturb mode for the current user, or changes its duration.'
+    url: 'https://api.slack.com/methods/dnd.setSnooze'
+    endpoint: /dnd.setSnooze
+    parameters:
+      num_minutes:
+        type: integer
+        description: 'Number of minutes, from now, to snooze until.'
+get:
+  info:
+    description: 'Retrieves a user''s current Do Not Disturb status.'
+    url: 'https://api.slack.com/methods/dnd.info'
+    endpoint: /dnd.info
+    parameters:
+      user:
+        type: string
+        description: 'User to fetch status for (defaults to current user)'
+  teamInfo:
+    description: 'Retrieves the Do Not Disturb status for users on a team.'
+    url: 'https://api.slack.com/methods/dnd.teamInfo'
+    endpoint: /dnd.teamInfo
+    parameters:
+      users:
+        type: string
+        description: 'Comma-separated list of users to fetch Do Not Disturb status for'

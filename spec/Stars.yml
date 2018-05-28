@@ -1,0 +1,47 @@
+post:
+  add:
+    description: 'Adds a star to an item.'
+    url: 'https://api.slack.com/methods/stars.add'
+    endpoint: /stars.add
+    parameters:
+      file_comment:
+        type: string
+        description: 'File comment to add star to.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to add star to.'
+      channel:
+        type: string
+        description: 'Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).'
+      file:
+        type: string
+        description: 'File to add star to.'
+  remove:
+    description: 'Removes a star from an item.'
+    url: 'https://api.slack.com/methods/stars.remove'
+    endpoint: /stars.remove
+    parameters:
+      file_comment:
+        type: string
+        description: 'File comment to remove star from.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to remove star from.'
+      channel:
+        type: string
+        description: 'Channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`).'
+      file:
+        type: string
+        description: 'File to remove star from.'
+get:
+  getList:
+    description: 'Lists stars for a user.'
+    url: 'https://api.slack.com/methods/stars.list'
+    endpoint: /stars.list
+    parameters:
+      count:
+        type: string
+        description: ''
+      page:
+        type: string
+        description: ''

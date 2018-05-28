@@ -1,0 +1,178 @@
+post:
+  archive:
+    description: 'Archives a private channel.'
+    url: 'https://api.slack.com/methods/groups.archive'
+    endpoint: /groups.archive
+    parameters:
+      channel:
+        type: string
+        description: 'Private channel to archive'
+  create:
+    description: 'Creates a private channel.'
+    url: 'https://api.slack.com/methods/groups.create'
+    endpoint: /groups.create
+    parameters:
+      validate:
+        type: boolean
+        description: 'Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.'
+      name:
+        type: string
+        description: 'Name of private channel to create'
+  createChild:
+    description: 'Clones and archives a private channel.'
+    url: 'https://api.slack.com/methods/groups.createChild'
+    endpoint: /groups.createChild
+    parameters:
+      channel:
+        type: string
+        description: 'Private channel to clone and archive.'
+  invite:
+    description: 'Invites a user to a private channel.'
+    url: 'https://api.slack.com/methods/groups.invite'
+    endpoint: /groups.invite
+    parameters:
+      user:
+        type: string
+        description: 'User to invite.'
+      channel:
+        type: string
+        description: 'Private channel to invite user to.'
+  kick:
+    description: 'Removes a user from a private channel.'
+    url: 'https://api.slack.com/methods/groups.kick'
+    endpoint: /groups.kick
+    parameters:
+      user:
+        type: string
+        description: 'User to remove from private channel.'
+      channel:
+        type: string
+        description: 'Private channel to remove user from.'
+  leave:
+    description: 'Leaves a private channel.'
+    url: 'https://api.slack.com/methods/groups.leave'
+    endpoint: /groups.leave
+    parameters:
+      channel:
+        type: string
+        description: 'Private channel to leave'
+  mark:
+    description: 'Sets the read cursor in a private channel.'
+    url: 'https://api.slack.com/methods/groups.mark'
+    endpoint: /groups.mark
+    parameters:
+      ts:
+        type: number
+        description: 'Timestamp of the most recently seen message.'
+      channel:
+        type: string
+        description: 'Private channel to set reading cursor in.'
+  open:
+    description: 'Opens a private channel.'
+    url: 'https://api.slack.com/methods/groups.open'
+    endpoint: /groups.open
+    parameters:
+      channel:
+        type: string
+        description: 'Private channel to open.'
+  rename:
+    description: 'Renames a private channel.'
+    url: 'https://api.slack.com/methods/groups.rename'
+    endpoint: /groups.rename
+    parameters:
+      validate:
+        type: boolean
+        description: 'Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.'
+      name:
+        type: string
+        description: 'New name for private channel.'
+      channel:
+        type: string
+        description: 'Private channel to rename'
+  setPurpose:
+    description: 'Sets the purpose for a private channel.'
+    url: 'https://api.slack.com/methods/groups.setPurpose'
+    endpoint: /groups.setPurpose
+    parameters:
+      purpose:
+        type: string
+        description: 'The new purpose'
+      channel:
+        type: string
+        description: 'Private channel to set the purpose of'
+  setTopic:
+    description: 'Sets the topic for a private channel.'
+    url: 'https://api.slack.com/methods/groups.setTopic'
+    endpoint: /groups.setTopic
+    parameters:
+      topic:
+        type: string
+        description: 'The new topic'
+      channel:
+        type: string
+        description: 'Private channel to set the topic of'
+  unarchive:
+    description: 'Unarchives a private channel.'
+    url: 'https://api.slack.com/methods/groups.unarchive'
+    endpoint: /groups.unarchive
+    parameters:
+      channel:
+        type: string
+        description: 'Private channel to unarchive'
+get:
+  history:
+    description: 'Fetches history of messages and events from a private channel.'
+    url: 'https://api.slack.com/methods/groups.history'
+    endpoint: /groups.history
+    parameters:
+      count:
+        type: integer
+        description: 'Number of messages to return, between 1 and 1000.'
+      unreads:
+        type: boolean
+        description: 'Include `unread_count_display` in the output?'
+      inclusive:
+        type: boolean
+        description: 'Include messages with latest or oldest timestamp in results.'
+      oldest:
+        type: number
+        description: 'Start of time range of messages to include in results.'
+      channel:
+        type: string
+        description: 'Private channel to fetch history for.'
+      latest:
+        type: number
+        description: 'End of time range of messages to include in results.'
+  info:
+    description: 'Gets information about a private channel.'
+    url: 'https://api.slack.com/methods/groups.info'
+    endpoint: /groups.info
+    parameters:
+      include_locale:
+        type: boolean
+        description: 'Set this to `true` to receive the locale for this group. Defaults to `false`'
+      channel:
+        type: string
+        description: 'Private channel to get info on'
+  getList:
+    description: 'Lists private channels that the calling user has access to.'
+    url: 'https://api.slack.com/methods/groups.list'
+    endpoint: /groups.list
+    parameters:
+      exclude_members:
+        type: boolean
+        description: 'Exclude the `members` from each `group`'
+      exclude_archived:
+        type: boolean
+        description: 'Don''t return archived private channels.'
+  replies:
+    description: 'Retrieve a thread of messages posted to a private channel'
+    url: 'https://api.slack.com/methods/groups.replies'
+    endpoint: /groups.replies
+    parameters:
+      thread_ts:
+        type: number
+        description: 'Unique identifier of a thread''s parent message'
+      channel:
+        type: string
+        description: 'Private channel to fetch thread from'

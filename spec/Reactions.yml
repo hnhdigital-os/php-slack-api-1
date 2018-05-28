@@ -1,0 +1,79 @@
+post:
+  add:
+    description: 'Adds a reaction to an item.'
+    url: 'https://api.slack.com/methods/reactions.add'
+    endpoint: /reactions.add
+    parameters:
+      name:
+        type: string
+        description: 'Reaction (emoji) name.'
+      file_comment:
+        type: string
+        description: 'File comment to add reaction to.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to add reaction to.'
+      file:
+        type: string
+        description: 'File to add reaction to.'
+      channel:
+        type: string
+        description: 'Channel where the message to add reaction to was posted.'
+  remove:
+    description: 'Removes a reaction from an item.'
+    url: 'https://api.slack.com/methods/reactions.remove'
+    endpoint: /reactions.remove
+    parameters:
+      name:
+        type: string
+        description: 'Reaction (emoji) name.'
+      file_comment:
+        type: string
+        description: 'File comment to remove reaction from.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to remove reaction from.'
+      file:
+        type: string
+        description: 'File to remove reaction from.'
+      channel:
+        type: string
+        description: 'Channel where the message to remove reaction from was posted.'
+get:
+  get:
+    description: 'Gets reactions for an item.'
+    url: 'https://api.slack.com/methods/reactions.get'
+    endpoint: /reactions.get
+    parameters:
+      full:
+        type: boolean
+        description: 'If true always return the complete reaction list.'
+      file_comment:
+        type: string
+        description: 'File comment to get reactions for.'
+      timestamp:
+        type: number
+        description: 'Timestamp of the message to get reactions for.'
+      file:
+        type: string
+        description: 'File to get reactions for.'
+      channel:
+        type: string
+        description: 'Channel where the message to get reactions for was posted.'
+  getList:
+    description: 'Lists reactions made by a user.'
+    url: 'https://api.slack.com/methods/reactions.list'
+    endpoint: /reactions.list
+    parameters:
+      count:
+        type: string
+        description: ''
+      full:
+        type: boolean
+        description: 'If true always return the complete reaction list.'
+      user:
+        type: string
+        description: 'Show reactions made by this user. Defaults to the authed user.'
+      page:
+        type: string
+        description: ''

@@ -1,0 +1,70 @@
+get:
+  all:
+    description: 'Searches for messages and files matching a query.'
+    url: 'https://api.slack.com/methods/search.all'
+    endpoint: /search.all
+    parameters:
+      sort_dir:
+        type: string
+        description: 'Change sort direction to ascending (`asc`) or descending (`desc`).'
+      query:
+        type: string
+        description: 'Search query. May contains booleans, etc.'
+      sort:
+        type: string
+        description: 'Return matches sorted by either `score` or `timestamp`.'
+      count:
+        type: string
+        description: ''
+      highlight:
+        type: boolean
+        description: 'Pass a value of `true` to enable query highlight markers (see below).'
+      page:
+        type: string
+        description: ''
+  files:
+    description: 'Searches for files matching a query.'
+    url: 'https://api.slack.com/methods/search.files'
+    endpoint: /search.files
+    parameters:
+      sort_dir:
+        type: string
+        description: 'Change sort direction to ascending (`asc`) or descending (`desc`).'
+      query:
+        type: string
+        description: 'Search query.'
+      sort:
+        type: string
+        description: 'Return matches sorted by either `score` or `timestamp`.'
+      highlight:
+        type: boolean
+        description: 'Pass a value of `true` to enable query highlight markers (see below).'
+      count:
+        type: string
+        description: ''
+      page:
+        type: string
+        description: ''
+  messages:
+    description: 'Searches for messages matching a query.'
+    url: 'https://api.slack.com/methods/search.messages'
+    endpoint: /search.messages
+    parameters:
+      sort_dir:
+        type: string
+        description: 'Change sort direction to ascending (`asc`) or descending (`desc`).'
+      query:
+        type: string
+        description: 'Search query.'
+      sort:
+        type: string
+        description: 'Return matches sorted by either `score` or `timestamp`.'
+      count:
+        type: string
+        description: 'Pass the number of results you want per "page". Maximum of `100`.'
+      highlight:
+        type: boolean
+        description: 'Pass a value of `true` to enable query highlight markers (see below).'
+      page:
+        type: string
+        description: ''

@@ -1,0 +1,38 @@
+get:
+  connect:
+    description: 'Starts a Real Time Messaging session.'
+    url: 'https://api.slack.com/methods/rtm.connect'
+    endpoint: /rtm.connect
+    parameters:
+      presence_sub:
+        type: boolean
+        description: 'Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).'
+      batch_presence_aware:
+        type: boolean
+        description: 'Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).'
+  start:
+    description: 'Starts a Real Time Messaging session.'
+    url: 'https://api.slack.com/methods/rtm.start'
+    endpoint: /rtm.start
+    parameters:
+      no_latest:
+        type: boolean
+        description: 'Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets `no_unreads` to `1`'
+      simple_latest:
+        type: boolean
+        description: 'Return timestamp only for latest message object of each channel (improves performance).'
+      include_locale:
+        type: boolean
+        description: 'Set this to `true` to receive the locale for users and channels. Defaults to `false`'
+      presence_sub:
+        type: boolean
+        description: 'Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).'
+      no_unreads:
+        type: boolean
+        description: 'Skip unread counts for each channel (improves performance).'
+      batch_presence_aware:
+        type: boolean
+        description: 'Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).'
+      mpim_aware:
+        type: boolean
+        description: 'Returns MPIMs to the client in the API response.'

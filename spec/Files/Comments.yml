@@ -1,0 +1,37 @@
+post:
+  add:
+    description: 'Add a comment to an existing file.'
+    url: 'https://api.slack.com/methods/files.comments.add'
+    endpoint: /files.comments.add
+    parameters:
+      comment:
+        type: string
+        description: 'Text of the comment to add.'
+      file:
+        type: string
+        description: 'File to add a comment to.'
+  delete:
+    description: 'Deletes an existing comment on a file.'
+    url: 'https://api.slack.com/methods/files.comments.delete'
+    endpoint: /files.comments.delete
+    parameters:
+      id:
+        type: string
+        description: 'The comment to delete.'
+      file:
+        type: string
+        description: 'File to delete a comment from.'
+  edit:
+    description: 'Edit an existing file comment.'
+    url: 'https://api.slack.com/methods/files.comments.edit'
+    endpoint: /files.comments.edit
+    parameters:
+      comment:
+        type: string
+        description: 'Text of the comment to edit.'
+      id:
+        type: string
+        description: 'The comment to edit.'
+      file:
+        type: string
+        description: 'File containing the comment to edit.'

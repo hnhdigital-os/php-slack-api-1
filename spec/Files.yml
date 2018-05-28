@@ -1,0 +1,92 @@
+post:
+  delete:
+    description: 'Deletes a file.'
+    url: 'https://api.slack.com/methods/files.delete'
+    endpoint: /files.delete
+    parameters:
+      file:
+        type: string
+        description: 'ID of file to delete.'
+  revokePublicURL:
+    description: 'Revokes public/external sharing access for a file'
+    url: 'https://api.slack.com/methods/files.revokePublicURL'
+    endpoint: /files.revokePublicURL
+    parameters:
+      file:
+        type: string
+        description: 'File to revoke'
+  sharedPublicURL:
+    description: 'Enables a file for public/external sharing.'
+    url: 'https://api.slack.com/methods/files.sharedPublicURL'
+    endpoint: /files.sharedPublicURL
+    parameters:
+      file:
+        type: string
+        description: 'File to share'
+  upload:
+    description: 'Uploads or creates a file.'
+    url: 'https://api.slack.com/methods/files.upload'
+    endpoint: /files.upload
+    parameters:
+      channels:
+        type: string
+        description: 'Comma-separated list of channel names or IDs where the file will be shared.'
+      title:
+        type: string
+        description: 'Title of file.'
+      initial_comment:
+        type: string
+        description: 'Initial comment to add to file.'
+      filetype:
+        type: string
+        description: 'A [file type](/types/file#file_types) identifier.'
+      filename:
+        type: string
+        description: 'Filename of file.'
+      content:
+        type: string
+        description: 'File contents via a POST variable. If omitting this parameter, you must provide a `file`.'
+      file:
+        type: string
+        description: 'File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.'
+get:
+  info:
+    description: 'Gets information about a team file.'
+    url: 'https://api.slack.com/methods/files.info'
+    endpoint: /files.info
+    parameters:
+      count:
+        type: string
+        description: ''
+      file:
+        type: string
+        description: 'Specify a file by providing its ID.'
+      page:
+        type: string
+        description: ''
+  getList:
+    description: 'Lists & filters team files.'
+    url: 'https://api.slack.com/methods/files.list'
+    endpoint: /files.list
+    parameters:
+      count:
+        type: string
+        description: ''
+      channel:
+        type: string
+        description: 'Filter files appearing in a specific channel, indicated by its ID.'
+      ts_to:
+        type: number
+        description: 'Filter files created before this timestamp (inclusive).'
+      ts_from:
+        type: number
+        description: 'Filter files created after this timestamp (inclusive).'
+      user:
+        type: string
+        description: 'Filter files created by a single user.'
+      page:
+        type: string
+        description: ''
+      types:
+        type: string
+        description: "Filter files by type:\n\n* `all` - All files\n* `spaces` - Posts\n* `snippets` - Snippets\n* `images` - Image files\n* `gdocs` - Google docs\n* `zips` - Zip files\n* `pdfs` - PDF files\n\nYou can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list."

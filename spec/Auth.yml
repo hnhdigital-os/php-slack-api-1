@@ -1,0 +1,14 @@
+get:
+  revoke:
+    description: 'Revokes a token.'
+    url: 'https://api.slack.com/methods/auth.revoke'
+    endpoint: /auth.revoke
+    parameters:
+      test:
+        type: boolean
+        description: 'Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.'
+  test:
+    description: 'Checks authentication & identity.'
+    url: 'https://api.slack.com/methods/auth.test'
+    endpoint: /auth.test
+    parameters: {  }

@@ -1,0 +1,88 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Yaml\Yaml;
+
+require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/helpers.php';
+
+$root_path = realpath(__DIR__.'/..');
+chdir($root_path);
+
+$source_local_path = $source_path = 'build/openapi.json';
+
+if (!file_exists($source_path)) {
+    $source_path = 'https://api.slack.com/specs/openapi/v2/slack_web.json';
+}
+
+$class_name_changes = [
+    'Usergroups' => 'UserGroups',
+    'Usergroups/Users' => 'UserGroups/Users',
+];
+
+$spec_document = json_decode(file_get_contents($source_path), true);
+
+exec('rm -rf spec/');
+
+foreach ($spec_document['paths'] as $path => $methods) {
+
+    $path_array = explode('.', ltrim($path, '/'));
+
+    $class_name = str_replace(' ', '/', title_case(implode(' ', array_slice($path_array, 0, -1))));
+    $function_name = array_get(array_slice($path_array, -1), 0);
+
+    if (array_has($class_name_changes, $class_name)) {
+        $class_name = array_get($class_name_changes, $class_name);
+    }
+       
+    $spec_path = 'spec/'.$class_name.'.yml';
+
+    $config = [];
+    if (file_exists($spec_path)) {
+        $config = Yaml::parse(file_get_contents($spec_path));
+    }
+
+    foreach ($methods as $method => $method_details) {
+
+        $parameters = [];
+
+        foreach (array_get($method_details, 'parameters', []) as $parameter) {
+            if (array_get($parameter, 'in') == 'header') {
+                continue;
+            }
+
+            if ($parameter['name'] == 'token') {
+                continue;
+            }
+
+            $parameters[$parameter['name']] = [
+                'type'        => array_get($parameter, 'type', ''),
+                'description' => array_get($parameter, 'description', ''),
+            ];
+        }
+
+        $function_details = [
+            'description' => array_get($method_details, 'description', ''),
+            'url'         => array_get($method_details, 'externalDocs.url', ''),
+            'endpoint'    => $path,
+            'parameters'  => $parameters,
+        ];
+
+        array_set($config, $method.'.'.check_function_name($function_name, $method), $function_details);
+    }    
+
+    // Create folder if missing.
+    if (!file_exists(dirname($spec_path))) {
+        mkdir(dirname($spec_path), 0777, true);
+    }
+
+    $spec_fixes_path = 'spec-fixes/'.$class_name.'.yml';
+    if (file_exists($spec_fixes_path)) {
+        $config_fixes = Yaml::parse(file_get_contents($spec_fixes_path));
+        $config = array_replace_recursive($config, $config_fixes);
+    }
+
+    file_put_contents($spec_path, Yaml::dump($config, 5, 2));
+
+    unset($config);
+}

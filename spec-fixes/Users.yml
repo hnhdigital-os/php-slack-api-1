@@ -1,0 +1,5 @@
+post:
+  setPhoto:
+    parameters:
+      image:
+        required: true

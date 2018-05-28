@@ -1,0 +1,6 @@
+get:
+  getList:
+    description: 'Returns list of scopes this app has on a team.'
+    url: 'https://api.slack.com/methods/apps.permissions.scopes.list'
+    endpoint: /apps.permissions.scopes.list
+    parameters: {  }

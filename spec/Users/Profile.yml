@@ -1,0 +1,30 @@
+get:
+  get:
+    description: 'Retrieves a user''s profile information.'
+    url: 'https://api.slack.com/methods/users.profile.get'
+    endpoint: /users.profile.get
+    parameters:
+      include_labels:
+        type: boolean
+        description: 'Include labels for each ID in custom profile fields'
+      user:
+        type: string
+        description: 'User to retrieve profile info for'
+post:
+  set:
+    description: 'Set the profile information for a user.'
+    url: 'https://api.slack.com/methods/users.profile.set'
+    endpoint: /users.profile.set
+    parameters:
+      profile:
+        type: string
+        description: 'Collection of key:value pairs presented as a URL-encoded JSON hash.'
+      user:
+        type: string
+        description: 'ID of user to change. This argument may only be specified by team admins on paid teams.'
+      value:
+        type: string
+        description: 'Value to set a single key to. Usable only if `profile` is not passed.'
+      name:
+        type: string
+        description: 'Name of a single key to set. Usable only if `profile` is not passed.'

@@ -1,0 +1,17 @@
+get:
+  info:
+    description: 'Returns list of permissions this app has on a team.'
+    url: 'https://api.slack.com/methods/apps.permissions.info'
+    endpoint: /apps.permissions.info
+    parameters: {  }
+  request:
+    description: 'Allows an app to request additional scopes'
+    url: 'https://api.slack.com/methods/apps.permissions.request'
+    endpoint: /apps.permissions.request
+    parameters:
+      scopes:
+        type: string
+        description: 'A comma separated list of scopes to request for'
+      trigger_id:
+        type: string
+        description: 'Token used to trigger the permissions API'

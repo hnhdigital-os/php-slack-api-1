@@ -1,0 +1,6 @@
+get:
+  getList:
+    description: 'Lists custom emoji for a team.'
+    url: 'https://api.slack.com/methods/emoji.list'
+    endpoint: /emoji.list
+    parameters: {  }

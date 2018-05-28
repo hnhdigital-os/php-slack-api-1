@@ -1,0 +1,45 @@
+post:
+  add:
+    description: 'Creates a reminder.'
+    url: 'https://api.slack.com/methods/reminders.add'
+    endpoint: /reminders.add
+    parameters:
+      text:
+        type: string
+        description: 'The content of the reminder'
+      user:
+        type: string
+        description: 'The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.'
+      time:
+        type: string
+        description: 'When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")'
+  complete:
+    description: 'Marks a reminder as complete.'
+    url: 'https://api.slack.com/methods/reminders.complete'
+    endpoint: /reminders.complete
+    parameters:
+      reminder:
+        type: string
+        description: 'The ID of the reminder to be marked as complete'
+  delete:
+    description: 'Deletes a reminder.'
+    url: 'https://api.slack.com/methods/reminders.delete'
+    endpoint: /reminders.delete
+    parameters:
+      reminder:
+        type: string
+        description: 'The ID of the reminder'
+get:
+  info:
+    description: 'Gets information about a reminder.'
+    url: 'https://api.slack.com/methods/reminders.info'
+    endpoint: /reminders.info
+    parameters:
+      reminder:
+        type: string
+        description: 'The ID of the reminder'
+  getList:
+    description: 'Lists all reminders created by or for a given user.'
+    url: 'https://api.slack.com/methods/reminders.list'
+    endpoint: /reminders.list
+    parameters: {  }

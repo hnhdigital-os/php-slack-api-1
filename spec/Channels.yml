@@ -1,0 +1,179 @@
+post:
+  archive:
+    description: 'Archives a channel.'
+    url: 'https://api.slack.com/methods/channels.archive'
+    endpoint: /channels.archive
+    parameters:
+      channel:
+        type: string
+        description: 'Channel to archive'
+  create:
+    description: 'Creates a channel.'
+    url: 'https://api.slack.com/methods/channels.create'
+    endpoint: /channels.create
+    parameters:
+      validate:
+        type: boolean
+        description: 'Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.'
+      name:
+        type: string
+        description: 'Name of channel to create'
+  invite:
+    description: 'Invites a user to a channel.'
+    url: 'https://api.slack.com/methods/channels.invite'
+    endpoint: /channels.invite
+    parameters:
+      user:
+        type: string
+        description: 'User to invite to channel.'
+      channel:
+        type: string
+        description: 'Channel to invite user to.'
+  join:
+    description: 'Joins a channel, creating it if needed.'
+    url: 'https://api.slack.com/methods/channels.join'
+    endpoint: /channels.join
+    parameters:
+      validate:
+        type: boolean
+        description: 'Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.'
+      name:
+        type: string
+        description: 'Name of channel to join'
+  kick:
+    description: 'Removes a user from a channel.'
+    url: 'https://api.slack.com/methods/channels.kick'
+    endpoint: /channels.kick
+    parameters:
+      user:
+        type: string
+        description: 'User to remove from channel.'
+      channel:
+        type: string
+        description: 'Channel to remove user from.'
+  leave:
+    description: 'Leaves a channel.'
+    url: 'https://api.slack.com/methods/channels.leave'
+    endpoint: /channels.leave
+    parameters:
+      channel:
+        type: string
+        description: 'Channel to leave'
+  mark:
+    description: 'Sets the read cursor in a channel.'
+    url: 'https://api.slack.com/methods/channels.mark'
+    endpoint: /channels.mark
+    parameters:
+      ts:
+        type: number
+        description: 'Timestamp of the most recently seen message.'
+      channel:
+        type: string
+        description: 'Channel to set reading cursor in.'
+  rename:
+    description: 'Renames a channel.'
+    url: 'https://api.slack.com/methods/channels.rename'
+    endpoint: /channels.rename
+    parameters:
+      validate:
+        type: boolean
+        description: 'Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria.'
+      name:
+        type: string
+        description: 'New name for channel.'
+      channel:
+        type: string
+        description: 'Channel to rename'
+  setPurpose:
+    description: 'Sets the purpose for a channel.'
+    url: 'https://api.slack.com/methods/channels.setPurpose'
+    endpoint: /channels.setPurpose
+    parameters:
+      purpose:
+        type: string
+        description: 'The new purpose'
+      channel:
+        type: string
+        description: 'Channel to set the purpose of'
+  setTopic:
+    description: 'Sets the topic for a channel.'
+    url: 'https://api.slack.com/methods/channels.setTopic'
+    endpoint: /channels.setTopic
+    parameters:
+      topic:
+        type: string
+        description: 'The new topic'
+      channel:
+        type: string
+        description: 'Channel to set the topic of'
+  unarchive:
+    description: 'Unarchives a channel.'
+    url: 'https://api.slack.com/methods/channels.unarchive'
+    endpoint: /channels.unarchive
+    parameters:
+      channel:
+        type: string
+        description: 'Channel to unarchive'
+get:
+  history:
+    description: 'Fetches history of messages and events from a channel.'
+    url: 'https://api.slack.com/methods/channels.history'
+    endpoint: /channels.history
+    parameters:
+      count:
+        type: integer
+        description: 'Number of messages to return, between 1 and 1000.'
+      unreads:
+        type: boolean
+        description: 'Include `unread_count_display` in the output?'
+      inclusive:
+        type: boolean
+        description: 'Include messages with latest or oldest timestamp in results.'
+      oldest:
+        type: number
+        description: 'Start of time range of messages to include in results.'
+      channel:
+        type: string
+        description: 'Channel to fetch history for.'
+      latest:
+        type: number
+        description: 'End of time range of messages to include in results.'
+  info:
+    description: 'Gets information about a channel.'
+    url: 'https://api.slack.com/methods/channels.info'
+    endpoint: /channels.info
+    parameters:
+      include_locale:
+        type: boolean
+        description: 'Set this to `true` to receive the locale for this channel. Defaults to `false`'
+      channel:
+        type: string
+        description: 'Channel to get info on'
+  getList:
+    description: 'Lists all channels in a Slack team.'
+    url: 'https://api.slack.com/methods/channels.list'
+    endpoint: /channels.list
+    parameters:
+      exclude_members:
+        type: boolean
+        description: 'Exclude the `members` collection from each `channel`'
+      cursor:
+        type: string
+        description: 'Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request''s `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.'
+      limit:
+        type: integer
+        description: 'The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn''t been reached.'
+      exclude_archived:
+        type: boolean
+        description: 'Exclude archived channels from the list'
+  replies:
+    description: 'Retrieve a thread of messages posted to a channel'
+    url: 'https://api.slack.com/methods/channels.replies'
+    endpoint: /channels.replies
+    parameters:
+      thread_ts:
+        type: number
+        description: 'Unique identifier of a thread''s parent message'
+      channel:
+        type: string
+        description: 'Channel to fetch thread from'

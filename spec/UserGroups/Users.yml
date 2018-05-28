@@ -1,0 +1,27 @@
+get:
+  getList:
+    description: 'List all users in a User Group'
+    url: 'https://api.slack.com/methods/usergroups.users.list'
+    endpoint: /usergroups.users.list
+    parameters:
+      include_disabled:
+        type: boolean
+        description: 'Allow results that involve disabled User Groups.'
+      usergroup:
+        type: string
+        description: 'The encoded ID of the User Group to update.'
+post:
+  update:
+    description: 'Update the list of users for a User Group'
+    url: 'https://api.slack.com/methods/usergroups.users.update'
+    endpoint: /usergroups.users.update
+    parameters:
+      include_count:
+        type: boolean
+        description: 'Include the number of users in the User Group.'
+      users:
+        type: string
+        description: 'A comma separated string of encoded user IDs that represent the entire list of users for the User Group.'
+      usergroup:
+        type: string
+        description: 'The encoded ID of the User Group to update.'

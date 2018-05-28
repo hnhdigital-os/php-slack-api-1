@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/helpers.php';
+
+$root_path = realpath(__DIR__.'/..');
+
+// Path to spec definitions.
+$spec_path = "$root_path/spec";
+
+// Path to where classes will be generated to.
+$output_path = "$root_path/src/endpoints";
+
+// Remove currently generated endpoints.
+exec('rm -rf '.$output_path);
+
+// Process each defined spec.
+foreach (get_spec_files($spec_path) as $model_yml_path) {
+
+    // Get info about this is spec.
+    $info = parse_spec_file($spec_path, $model_yml_path);
+
+    console_output('%s\\%s', $info['namespace'], $info['class_name']);
+
+    // No data.
+    if (empty($info['spec'])) {
+        console_output('...skipped.');
+        continue;
+    }
+
+    // Generate the class.
+    $contents = "<?php\n".generate_class_content($info);
+
+    // Destination path for this class.
+    $model_output_path = $output_path.$info['path'];
+
+    // Create folder(s).
+    if (!file_exists($model_output_path)) {
+        mkdir($model_output_path, 0755, true);
+    }
+
+    // Create the class file.
+    file_put_contents($model_output_path.'/'.$info['class_name'].'.php', $contents);
+}

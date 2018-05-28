@@ -1,0 +1,9 @@
+get:
+  info:
+    description: 'Gets information about a bot user.'
+    url: 'https://api.slack.com/methods/bots.info'
+    endpoint: /bots.info
+    parameters:
+      bot:
+        type: string
+        description: 'Bot user to get info on'
